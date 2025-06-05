@@ -2,6 +2,8 @@
 Consulta detalhada de usuarios.
 
 <?php
+include('segurancadez.php');
+include('cabecalho.php');
 include('conn.php');
 if(!isset($_GET['id'])){
     header('Location: listausuarios.php');
@@ -11,6 +13,7 @@ $id = $_GET['id'];
 $sql = "SELECT * FROM tb_usuarios WHERE id_usuario = $id";
 $result = mysqli_query($link,$sql);
 $tbl = mysqli_fetch_array($result);
+mysqli_close($link);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
